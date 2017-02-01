@@ -4,14 +4,16 @@
           .module("turtleFacts")
           .controller("listCtrl", ListController);
 
-    function ListController () {
+    ListController.$inject = ['quizMetrics'];
+
+    function ListController (quizMetrics) {
       // List controller logic
       var vm = this;
 
+      vm.quizMetrics = quizMetrics;
       vm.data = turtlesData;
       vm.activeTurtle = {}; // will be used in the view to hold the data of currently active turtle
       vm.search = "";      // Adding the Search property to be used in the ng-model
-      vm.quizActive = false;
       vm.changeActiveTurtle = changeActiveTurtle;
       vm.activateQuiz = activateQuiz;
 
@@ -20,7 +22,7 @@
       }
 
       function activateQuiz () {
-        vm.quizActive = true;
+        quizMetrics.changeState(true);
       }
 
     }
