@@ -19,9 +19,16 @@
       </h3>
     </div>
           <!-- Hook on the controller for this view and specify when to show it using ng-hide -->
-          <div ng-controller = "listCtrl as list">
+          <div ng-controller = "listCtrl as list" ng-hide = "list.quizActive">
+            <form class = "form-inline well well-sm clearfix">
+                  <span class = "glyphicon glyphicon-search"></span>
+                  <input type="text" placeholder ="search" class="form-control" ng-model = "list.search">
+                  <button class = "btn btn-warning pull-right" ng-click = "list.activateQuiz()">
+                         <strong>Start Quiz</strong>
+                  </button>
+            </form>
             <div class="row">
-                <div class="col-sm-6" ng-repeat = "turtle in list.data">
+                <div class="col-sm-6" ng-repeat = "turtle in list.data | filter:list.search">
                   <div class="well well-sm">
                     <div class="row">
                       <div class="col-md-6">

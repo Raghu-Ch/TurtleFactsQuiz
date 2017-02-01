@@ -10,12 +10,19 @@
 
       vm.data = turtlesData;
       vm.activeTurtle = {}; // will be used in the view to hold the data of currently active turtle
-
+      vm.search = "";      // Adding the Search property to be used in the ng-model
+      vm.quizActive = false;
       vm.changeActiveTurtle = changeActiveTurtle;
+      vm.activateQuiz = activateQuiz;
 
       function changeActiveTurtle (index) {
         vm.activeTurtle = index;
       }
+
+      function activateQuiz () {
+        vm.quizActive = true;
+      }
+
     }
 
 var turtlesData = [
